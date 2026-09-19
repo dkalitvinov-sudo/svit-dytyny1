@@ -85,6 +85,12 @@
             color: var(--accent-turquoise);
         }
 
+        /* Стилі для випадаючого меню дзвінка */
+        .phone-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
         .btn-call {
             background: linear-gradient(135deg, #8eecf5 0%, #a2d2ff 100%);
             color: #1b4965;
@@ -92,13 +98,75 @@
             border-radius: 25px;
             text-decoration: none;
             font-weight: 800;
+            border: none;
+            cursor: pointer;
             transition: 0.3s;
             box-shadow: 0 4px 12px rgba(142, 236, 245, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
         }
 
         .btn-call:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(142, 236, 245, 0.6);
+        }
+
+        .phone-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 110%;
+            background-color: #ffffff;
+            min-width: 290px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
+            border-radius: 18px;
+            padding: 12px;
+            z-index: 1001;
+            border: 2px solid var(--soft-pink);
+        }
+
+        .phone-menu.show {
+            display: block;
+        }
+
+        .phone-item {
+            display: block;
+            padding: 10px 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            border-radius: 12px;
+            transition: background 0.2s;
+            margin-bottom: 5px;
+        }
+
+        .phone-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .phone-item:hover {
+            background: var(--primary-bg);
+        }
+
+        .phone-item-title {
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: #d63384;
+            display: block;
+        }
+
+        .phone-item-address {
+            font-size: 0.8rem;
+            color: #666;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .phone-item-number {
+            font-weight: 800;
+            color: #00b4d8;
+            font-size: 0.95rem;
         }
 
         .hero {
@@ -162,6 +230,23 @@
         .branch-badge.left-bank {
             background: linear-gradient(135deg, #8eecf5, #bde0fe);
             color: #115e67;
+        }
+
+        .btn-branch-call {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: #f8edeb;
+            color: #3d3a45;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .btn-branch-call:hover {
+            background: var(--soft-pink);
         }
 
         .activities-section {
@@ -299,8 +384,26 @@
             border-top: 5px solid var(--soft-pink);
         }
 
-        footer a {
+        .footer-phones {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-phone-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px 25px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-phone-card a {
             color: var(--soft-turquoise);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
         }
 
         .social-links {
@@ -352,7 +455,24 @@
                     <li><a href="#contacts">Контакти</a></li>
                 </ul>
             </nav>
-            <a href="tel:+380634865932" class="btn-call">📞 (063) 486-59-32</a>
+
+            <!-- Кнопка Дзвінка з випадаючим вибором філії -->
+            <div class="phone-dropdown">
+                <button class="btn-call" onclick="togglePhoneMenu()">📞 Зателефонувати ▾</button>
+                <div class="phone-menu" id="phoneMenu">
+                    <a href="tel:+380634865932" class="phone-item">
+                        <span class="phone-item-title">📍 Правий берег (Голосіїв)</span>
+                        <span class="phone-item-address">вул. Ю. Здановської, 83а</span>
+                        <span class="phone-item-number">📞 (063) 486-59-32</span>
+                    </a>
+                    <a href="tel:+380636241364" class="phone-item">
+                        <span class="phone-item-title">📍 Лівий берег (Лівобережна)</span>
+                        <span class="phone-item-address">ЖК «Каховська»</span>
+                        <span class="phone-item-number">📞 (063) 624-13-64</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </header>
 
@@ -373,6 +493,7 @@
                 <p>📍 м. Київ, вул. Ю. Здановської, 83а</p>
                 <p>🚇 м. Виставковий центр / Васильківська</p>
                 <p>⏰ Пн-Пт: 08:00 - 18:00</p>
+                <a href="tel:+380634865932" class="btn-branch-call">📞 (063) 486-59-32</a>
             </div>
             <div class="branch-card">
                 <span class="branch-badge left-bank">Лівий берег</span>
@@ -380,6 +501,7 @@
                 <p>📍 м. Київ, Лівий берег, ЖК «Каховська»</p>
                 <p>🚇 Орієнтир: м. Лівобережна</p>
                 <p>⏰ Пн-Пт: 08:00 - 18:00</p>
+                <a href="tel:+380636241364" class="btn-branch-call">📞 (063) 624-13-64</a>
             </div>
         </div>
     </section>
@@ -397,12 +519,11 @@
         <h2 style="text-align: center; color: #4a3e3d;">Наші заняття та напрямки розвитку</h2>
         <div class="activities-grid">
 
-            <!-- 1. Підготовка до школи -->
             <div class="activity-card">
                 <div>
                     <div style="font-size: 2.5rem; margin-bottom: 10px;">📚</div>
                     <h3>Підготовка до школи</h3>
-                    <p>Підготовка до школи — це не лише навчити читати й писати. Це про впевненість дитини, внутрішній спокій та бажання вчитися. Ми готуємо дітей до школи м’яко, системно та з урахуванням віку. Без перевантаження, порівнянь і страху помилок.</p>
+                    <p>Підготовка до школи — це не лише навчити читати й писати. Це про впевненість дитини, внутрішній спокій та бажання вчитися. Ми готуємо дітей до школи м’яко, системно та з урахуванням віку.</p>
                     
                     <div id="schoolDetails" class="details-info">
                         <strong>На заняттях діти:</strong>
@@ -411,19 +532,18 @@
                             <li>опановують письмо та графомоторні навички</li>
                             <li>розвивають логіку, мислення, пам’ять та увагу</li>
                             <li>ознайомляться з математикою у доступній ігровій формі</li>
-                            <li>тренують самостійність, посидючість і вміння слухати завдання</li>
+                            <li>тренують самостійність та вміння слухати завдання</li>
                         </ul>
                     </div>
                 </div>
                 <button class="btn-more" onclick="toggleDetails('schoolDetails', this)">Детальніше</button>
             </div>
 
-            <!-- 2. Логопед -->
             <div class="activity-card">
                 <div>
                     <div style="font-size: 2.5rem; margin-bottom: 10px;">🗣️</div>
                     <h3>Логопед</h3>
-                    <p>Мовлення — це не лише звуки, а впевненість, контакт і радість від спілкування. На індивідуальних заняттях логопед допомагає дитині розвивати мовлення у комфортному темпі, через гру та підтримку.</p>
+                    <p>Мовлення — це не лише звуки, а впевненість, контакт і радість від спілкування. На індивідуальних заняттях логопед допомагає дитині розвивати мовлення у комфортному темпі.</p>
                     
                     <div id="logopedDetails" class="details-info">
                         <strong>З чим працюємо:</strong>
@@ -433,79 +553,74 @@
                             <li>спрощення, заміни або перестановки складів</li>
                             <li>малий словниковий запас</li>
                             <li>артикуляційні порушення</li>
-                            <li>труднощі письмового мовлення</li>
                         </ul>
                     </div>
                 </div>
                 <button class="btn-more" onclick="toggleDetails('logopedDetails', this)">Детальніше</button>
             </div>
 
-            <!-- 3. Англійська мова -->
             <div class="activity-card">
                 <div>
                     <div style="font-size: 2.5rem; margin-bottom: 10px;">🇬🇧</div>
                     <h3>Англійська мова</h3>
-                    <p>Англійська мова — це вікно у світ та легке спілкування без бар’єрів! Заняття проходять у формі захопливої гри, де дитина природно занурюється у мовне середовище та починає розуміти й говорити англійською без примусу.</p>
+                    <p>Англійська мова — це вікно у світ та легке спілкування без бар’єрів! Заняття проходять у формі захопливої гри, де дитина природно занурюється у мовне середовище.</p>
                     
                     <div id="englishDetails" class="details-info">
                         <strong>На заняттях діти:</strong>
                         <ul>
-                            <li>опановують базовий словниковий запас через ігри, казки та інтерактив</li>
+                            <li>опановують базовий словниковий запас через ігри</li>
                             <li>вчаться сприймати англійську мову на слух</li>
-                            <li>співають пісеньки, вивчають віршики та розкривають мовний потенціал</li>
-                            <li>долають мовний бар'єр та навчаються легкому спілкуванню</li>
+                            <li>співають пісеньки, вивчають віршики</li>
+                            <li>долають мовний бар'єр</li>
                         </ul>
                     </div>
                 </div>
                 <button class="btn-more" onclick="toggleDetails('englishDetails', this)">Детальніше</button>
             </div>
 
-            <!-- 4. Творча студія -->
             <div class="activity-card">
                 <div>
                     <div style="font-size: 2.5rem; margin-bottom: 10px;">🎨</div>
                     <h3>Творча студія</h3>
-                    <p>Творчість — це простір без кордонів, де кожна дитина відчуває себе справжнім митцем. Ми допомагаємо розкрити внутрішній світ дитини, розвиваємо фантазію, відчуття кольору та естетичний смак через малювання та роботу з глиною.</p>
+                    <p>Творчість — це простір без кордонів, де кожна дитина відчуває себе справжнім митцем. Ми допомагаємо розкрити внутрішній світ дитини через малювання та роботу з глиною.</p>
                     
                     <div id="artDetails" class="details-info">
                         <strong>На заняттях діти:</strong>
                         <ul>
                             <li>опановують різні техніки малювання</li>
                             <li>працюють з глиною та опановують глинотерапію</li>
-                            <li>розвивають дрібну моторику, сенсорику та просторове мислення</li>
-                            <li>вчаться втілювати свої ідеї в життя та пишатися власними витворами</li>
+                            <li>розвивають дрібну моторику та сенсорику</li>
+                            <li>вчаться втілювати свої ідеї в життя</li>
                         </ul>
                     </div>
                 </div>
                 <button class="btn-more" onclick="toggleDetails('artDetails', this)">Детальніше</button>
             </div>
 
-            <!-- 5. Музичні заняття та логоритміка -->
             <div class="activity-card">
                 <div>
                     <div style="font-size: 2.5rem; margin-bottom: 10px;">🎵</div>
                     <h3>Музичні заняття та логоритміка</h3>
-                    <p>Музика — це мова почуттів, яка допомагає дитині розвиватися гармонійно, знімати емоційну напругу та відчувати радість руху. На заняттях діти поринають у світ звуків, ритмів і мелодій у легкій ігровій формі.</p>
+                    <p>Музика допомагає дитині розвиватися гармонійно, знімати емоційну напругу та відчувати радість руху. На заняттях діти поринають у світ звуків, ритмів і мелодій.</p>
                     
                     <div id="musicDetails" class="details-info">
                         <strong>На заняттях діти:</strong>
                         <ul>
-                            <li>розвивають музичний слух, відчуття ритму та чисте інтонування</li>
-                            <li>знайомляться з дитячими шумовими та музичними інструментами</li>
-                            <li>виконують логоритмічні та музично-рухові вправи для координації</li>
-                            <li>вчаться володіти голосом, співати в ансамблі та виражати емоції через музику</li>
+                            <li>розвивають музичний слух та відчуття ритму</li>
+                            <li>знайомляться з дитячими інструментами</li>
+                            <li>виконують логоритмічні вправи</li>
+                            <li>вчаться володіти голосом та співати</li>
                         </ul>
                     </div>
                 </div>
                 <button class="btn-more" onclick="toggleDetails('musicDetails', this)">Детальніше</button>
             </div>
 
-            <!-- 6. Хореографія -->
             <div class="activity-card">
                 <div>
                     <div style="font-size: 2.5rem; margin-bottom: 10px;">💃</div>
                     <h3>Хореографія</h3>
-                    <p>Хореографія — це не лише танець, а розвиток тіла, впевненості та емоційного стану дитини. Ми допомагаємо дітям відчути своє тіло, рухатися з радістю та розкриватися без сором’язливості. Заняття проходять у м’якому форматі, з урахуванням віку та можливостей кожної дитини.</p>
+                    <p>Хореографія — це розвиток тіла, впевненості та емоційного стану дитини. Ми допомагаємо дітям відчути своє тіло та рухатися з радістю.</p>
                     
                     <div id="danceDetails" class="details-info">
                         <strong>На заняттях діти:</strong>
@@ -546,7 +661,19 @@
     <footer id="contacts">
         <img src="logo.jpg" alt="Логотип" style="height: 55px; border-radius: 12px; margin-bottom: 10px;">
         <h3>Дитячий простір «Світ дитини»</h3>
-        <p style="margin-top: 10px; font-size: 1.2rem;">📞 <a href="tel:+380634865932">+380 (63) 486-59-32</a></p>
+        
+        <div class="footer-phones">
+            <div class="footer-phone-card">
+                <div style="font-size: 0.85rem; opacity: 0.8;">Правий берег (Голосіїв)</div>
+                <div style="font-size: 0.8rem; margin-bottom: 5px; opacity: 0.7;">вул. Ю. Здановської, 83а</div>
+                <a href="tel:+380634865932">📞 (063) 486-59-32</a>
+            </div>
+            <div class="footer-phone-card">
+                <div style="font-size: 0.85rem; opacity: 0.8;">Лівий берег (Лівобережна)</div>
+                <div style="font-size: 0.8rem; margin-bottom: 5px; opacity: 0.7;">ЖК «Каховська»</div>
+                <a href="tel:+380636241364">📞 (063) 624-13-64</a>
+            </div>
+        </div>
         
         <div class="social-links">
             <a href="https://www.instagram.com/svitditini" target="_blank" class="social-btn">Інстаграм Правого берега</a>
@@ -556,6 +683,7 @@
     </footer>
 
     <script>
+        // Перемикання деталей кнопок "Детальніше"
         function toggleDetails(id, btn) {
             var info = document.getElementById(id);
             if (info.style.display === "none" || info.style.display === "") {
@@ -564,6 +692,24 @@
             } else {
                 info.style.display = "none";
                 btn.innerText = "Детальніше";
+            }
+        }
+
+        // Перемикання випадаючого меню для телефонного дзвінка
+        function togglePhoneMenu() {
+            document.getElementById("phoneMenu").classList.toggle("show");
+        }
+
+        // Закривати меню при кліку поза ним
+        window.onclick = function(event) {
+            if (!event.target.matches('.btn-call') && !event.target.closest('.btn-call')) {
+                var dropdowns = document.getElementsByClassName("phone-menu");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
             }
         }
     </script>
