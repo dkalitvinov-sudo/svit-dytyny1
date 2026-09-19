@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Світ Дитини — Дитячий простір турботи та розвитку (Київ)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #f7fafd;
+            --mint: #70d6ff;
+            --soft-yellow: #ffeb3b;
+            --coral: #ff70a6;
+            --text-main: #2b2d42;
+            --card-bg: #ffffff;
+            --accent-green: #06d6a0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .brand-logo {
+            font-family: 'Comfortaa', cursive;
+        }
+
+        header {
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-box img {
+            height: 60px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--coral);
+        }
+
+        .btn-call {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-call:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #e0f7fa 0%, #fff9c4 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #1a535c;
+            margin-bottom: 20px;
+        }
+
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .branch-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 3px solid #eef2f5;
+            transition: 0.3s;
+        }
+
+        .branch-card:hover {
+            border-color: var(--mint);
+            transform: translateY(-5px);
+        }
+
+        .branch-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--coral);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .calc-section {
+            background: white;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .calc-result {
+            background: #f0fdf4;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #166534;
+            margin-top: 20px;
+        }
+
+        footer {
+            background: #2b2d42;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--mint);
+        }
+
+        .social-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; gap: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo-box">
+                <img src="logo.jpg" alt="Світ Дитини">
+                <div>
+                    <div style="font-weight: 800; font-size: 1.2rem; color: #ff70a6;">СВІТ ДИТИНИ</div>
+                    <div style="font-size: 0.8rem; color: #666;">Дитячий простір</div>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#branches">Філії</a></li>
+                    <li><a href="#calc">Калькулятор</a></li>
+                    <li><a href="#contacts">Контакти</a></li>
+                </ul>
+            </nav>
+            <a href="tel:+380634865932" class="btn-call">📞 (063) 486-59-32</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Простір щасливих дітей на Правому та Лівому березі Києва!</h1>
+            <p>Працюємо з 2015 року. Розвиток, турбота, підготовка до школи та безпечне середовище для вашої дитини.</p>
+        </div>
+    </section>
+
+    <section id="branches" style="padding: 40px 0;">
+        <h2 style="text-align: center; margin-bottom: 30px;">Наші Філії</h2>
+        <div class="branches-grid">
+            <div class="branch-card">
+                <span class="branch-badge">Правий берег</span>
+                <h3>Філія Голосієво</h3>
+                <p>📍 м. Київ, вул. Ю. Здановської, 83а</p>
+                <p>🚇 м. Виставковий центр / Васильківська</p>
+                <p>⏰ Пн-Пт: 08:00 - 19:00</p>
+            </div>
+            <div class="branch-card">
+                <span class="branch-badge" style="background: var(--mint);">Лівий берег</span>
+                <h3>Філія Лівий Берег</h3>
+                <p>📍 м. Київ (Уточніть вулицю)</p>
+                <p>🚇 Запишіться на візит</p>
+                <p>⏰ Пн-Пт: 08:00 - 19:00</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="calc" class="calc-section">
+        <h2 style="text-align: center; margin-bottom: 20px;">Розрахунок абонемента</h2>
+        <div class="form-group">
+            <label>Оберіть філію:</label>
+            <select id="branchSelect">
+                <option value="right">Правий берег (вул. Ю. Здановської)</option>
+                <option value="left">Лівий берег</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Формат відвідування:</label>
+            <select id="timeSelect">
+                <option value="full">Повний день (08:00 - 19:00)</option>
+                <option value="half">Півдня (08:00 - 13:00)</option>
+            </select>
+        </div>
+        <div class="calc-result" id="resultBox">
+            Орієнтовна вартість: 12 000 грн/міс
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <img src="logo.jpg" alt="Логотип" style="height: 50px; border-radius: 8px; margin-bottom: 10px;">
+        <h3>Дитячий простір «Світ дитини»</h3>
+        <p>Телефон: <a href="tel:+380634865932">+380 (63) 486-59-32</a></p>
+        <p>Email: kidworld.kiev@gmail.com</p>
+        
+        <div class="social-links">
+            <a href="https://www.instagram.com/svit_dytyny.kyiv" target="_blank" class="social-btn">Instagram 1</a>
+            <a href="https://www.instagram.com/svitditini" target="_blank" class="social-btn">Instagram 2</a>
+        </div>
+        <p style="font-size: 0.8rem; opacity: 0.7;">© 2026 Світ дитини. Всі права захищені.</p>
+    </footer>
+
+    <script>
+        const branchSelect = document.getElementById('branchSelect');
+        const timeSelect = document.getElementById('timeSelect');
+        const resultBox = document.getElementById('resultBox');
+
+        function updatePrice() {
+            let price = 12000;
+            if (timeSelect.value === 'half') price = 7500;
+            resultBox.innerText = `Орієнтовна вартість: ${price} грн/міс`;
+        }
+
+        branchSelect.addEventListener('change', updatePrice);
+        timeSelect.addEventListener('change', updatePrice);
+    </script>
+</body>
+</html>
