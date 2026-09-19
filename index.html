@@ -3,750 +3,480 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Світ Дитини — Дитячий простір турботи та розвитку (Київ)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
+    <title>Дитячий простір «Світ дитини» у Києві | Ігрова кімната та свята</title>
     <style>
         :root {
-            --primary-bg: #fff5f8;
-            --soft-pink: #f3c4fb;
-            --powder-pink: #ffcbf2;
-            --soft-turquoise: #8eecf5;
-            --mint-light: #bde0fe;
-            --sky-blue: #a2d2ff;
-            --text-main: #3d3a45;
+            --primary-pink: #ffc2d1;
+            --dark-pink: #e0829a;
+            --primary-turquoise: #b5e2fa;
+            --dark-turquoise: #59b3df;
+            --bg-color: #fff9fb;
+            --text-color: #4a4a4a;
             --card-bg: #ffffff;
-            --accent-pink: #f72585;
-            --accent-turquoise: #00b4d8;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--primary-bg);
-            color: var(--text-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
         }
 
-        h1, h2, h3 {
-            font-family: 'Comfortaa', cursive;
-        }
-
+        /* Шапка сайту - ЗАФІКСОВАНО: тепер вона звичайна (relative), не "літає" при скролі */
         header {
+            position: relative;
             background: #ffffff;
-            box-shadow: 0 4px 20px rgba(142, 236, 245, 0.15);
-            position: sticky;
-            top: 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 15px 20px;
+            text-align: center;
             z-index: 1000;
         }
 
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 20px;
-        }
-
-        .logo-box {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--text-main);
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
         }
 
-        .logo-box img {
+        .logo-container img {
+            width: 60px;
             height: 60px;
-            width: auto;
-            border-radius: 12px;
+            border-radius: 50%;
             object-fit: cover;
+            border: 2px solid var(--dark-pink);
         }
 
-        nav ul {
+        .logo-container h1 {
+            font-size: 1.8rem;
+            color: var(--dark-pink);
+            font-weight: 700;
+        }
+
+        .logo-container p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Навігація та випадаюче меню телефонів */
+        nav {
             display: flex;
-            list-style: none;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 20px;
+            margin-top: 10px;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-main);
-            font-weight: 700;
+            color: var(--text-color);
+            font-weight: 600;
             transition: color 0.3s;
+            font-size: 1rem;
         }
 
         nav a:hover {
-            color: var(--accent-turquoise);
+            color: var(--dark-turquoise);
         }
 
-        .phone-dropdown {
+        .dropdown {
             position: relative;
             display: inline-block;
         }
 
-        .btn-call {
-            background: linear-gradient(135deg, #8eecf5 0%, #a2d2ff 100%);
-            color: #1b4965;
-            padding: 10px 22px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 800;
+        .dropbtn {
+            background-color: var(--primary-turquoise);
+            color: #333;
+            padding: 10px 20px;
+            font-size: 1rem;
             border: none;
+            border-radius: 25px;
             cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 12px rgba(142, 236, 245, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background 0.3s;
         }
 
-        .btn-call:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(142, 236, 245, 0.6);
+        .dropbtn:hover {
+            background-color: var(--dark-turquoise);
+            color: white;
         }
 
-        .phone-menu {
+        .dropdown-content {
             display: none;
             position: absolute;
-            right: 0;
-            top: 110%;
             background-color: #ffffff;
-            min-width: 300px;
-            box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
-            border-radius: 18px;
-            padding: 12px;
-            z-index: 1001;
-            border: 2px solid var(--soft-pink);
-        }
-
-        .phone-menu.show {
-            display: block;
-        }
-
-        .phone-item {
-            display: block;
-            padding: 10px 12px;
-            text-decoration: none;
-            color: var(--text-main);
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
             border-radius: 12px;
-            transition: background 0.2s;
-            margin-bottom: 5px;
+            z-index: 1;
+            overflow: hidden;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .phone-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .phone-item:hover {
-            background: var(--primary-bg);
-        }
-
-        .phone-item-title {
-            font-weight: 800;
-            font-size: 0.9rem;
-            color: #d63384;
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
             display: block;
-        }
-
-        .phone-item-address {
-            font-size: 0.8rem;
-            color: #666;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .phone-item-number {
-            font-weight: 800;
-            color: #00b4d8;
+            text-align: left;
             font-size: 0.95rem;
+            border-bottom: 1px solid #f1f1f1;
         }
 
-        .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 245, 248, 0.6)), url('hero-bg.jpg') center/cover no-repeat;
-            padding: 90px 20px;
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--primary-pink);
+            color: #000;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Головний контейнер */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            margin: 40px 0;
+        }
+
+        h2.section-title {
             text-align: center;
+            font-size: 2.2rem;
+            color: var(--dark-pink);
+            margin-bottom: 30px;
             position: relative;
         }
 
-        .hero-container {
-            max-width: 850px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.85);
-            padding: 40px 30px;
-            border-radius: 30px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border: 2px solid rgba(255, 203, 242, 0.5);
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-turquoise);
+            margin: 8px auto 0;
+            border-radius: 2px;
         }
 
-        .hero h1 {
-            font-size: 2.3rem;
-            color: #3a2e39;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: #5c5460;
-        }
-
+        /* Філії */
         .branches-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
         }
 
         .branch-card {
-            background: white;
-            border-radius: 22px;
-            padding: 28px;
-            box-shadow: 0 8px 25px rgba(243, 196, 251, 0.25);
-            border: 2px solid #f8edeb;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border-top: 5px solid var(--dark-turquoise);
+        }
+
+        .branch-card.left-bank {
+            border-top-color: var(--dark-pink);
         }
 
         .branch-badge {
             display: inline-block;
-            padding: 6px 16px;
-            background: linear-gradient(135deg, #ffcbf2, #f3c4fb);
-            color: #6d2358;
+            padding: 5px 12px;
             border-radius: 15px;
             font-size: 0.85rem;
-            font-weight: 800;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .branch-card:not(.left-bank) .branch-badge {
+            background: var(--primary-turquoise);
+            color: #0056b3;
+        }
+
+        .branch-card.left-bank .branch-badge {
+            background: var(--primary-pink);
+            color: #8a1c38;
+        }
+
+        .branch-card h3 {
+            font-size: 1.4rem;
             margin-bottom: 15px;
+            color: #333;
         }
 
-        .branch-badge.left-bank {
-            background: linear-gradient(135deg, #8eecf5, #bde0fe);
-            color: #115e67;
+        .branch-card p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
         }
 
-        .btn-branch-call {
+        .phone-btn {
             display: inline-block;
-            margin-top: 15px;
-            padding: 8px 16px;
-            background: #f8edeb;
-            color: #3d3a45;
-            border-radius: 15px;
+            margin-top: 10px;
+            background: #f8f1f4;
+            color: var(--dark-pink);
+            padding: 8px 15px;
+            border-radius: 10px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: 0.2s;
+            font-weight: 600;
         }
 
-        .btn-branch-call:hover {
-            background: var(--soft-pink);
-        }
-
-        .activities-section {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
+        /* Заняття */
         .activities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
         .activity-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 5px 20px rgba(189, 224, 254, 0.2);
-            border-top: 5px solid var(--soft-turquoise);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .activity-card:nth-child(even) {
-            border-top-color: var(--soft-pink);
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            text-align: center;
+            border: 2px solid #fceef2;
         }
 
         .activity-card h3 {
-            margin-bottom: 12px;
-            color: #3d3a45;
+            color: var(--dark-pink);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
 
-        .btn-more {
-            margin-top: 20px;
-            background: linear-gradient(135deg, #8eecf5, #bde0fe);
-            color: #1b4965;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-        }
-
-        .btn-more:hover {
-            background: linear-gradient(135deg, #ffcbf2, #f3c4fb);
-            color: #5c1d47;
-        }
-
-        .details-info {
-            display: none;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed #e2c0d8;
-            text-align: left;
-            font-size: 0.92rem;
-            color: #55505f;
-        }
-
-        .details-info ul {
-            margin-left: 18px;
-            margin-top: 8px;
-        }
-
-        .details-info li {
-            margin-bottom: 5px;
-        }
-
-        .safety-box {
-            background: linear-gradient(135deg, #e8f8f5 0%, #f0f7ff 100%);
+        /* Ігрова кімната та дні народження */
+        .party-section {
+            background: linear-gradient(135deg, #fff0f5 0%, #e6f7ff 100%);
             border-radius: 25px;
             padding: 35px;
-            max-width: 1100px;
-            margin: 40px auto;
-            border: 2px dashed #8eecf5;
-            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
         }
 
-        /* Галерея без подписей */
-        .gallery-container {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .gallery-grid {
+        .party-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            gap: 25px;
+        }
+
+        .party-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 25px;
+            border-radius: 20px;
+        }
+
+        .party-box h3 {
+            color: var(--dark-turquoise);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .party-box ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .party-box ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .party-box ul li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Галерея з 5 реальних фото без підписів */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
 
         .gallery-item {
-            background: white;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-            border: 2px solid #fff;
+            height: 220px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .gallery-item img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
-            display: block;
+            transition: transform 0.4s ease;
         }
 
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Футер */
         footer {
-            background: #342e37;
+            background: #333;
             color: white;
-            padding: 45px 20px;
             text-align: center;
-            margin-top: 60px;
-            border-top: 5px solid var(--soft-pink);
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 5px solid var(--primary-pink);
         }
 
-        .footer-phones {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-phone-card {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 15px 25px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .footer-phone-card a {
-            color: var(--soft-turquoise);
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
-        }
-
-        .social-links {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            background: rgba(255,255,255,0.12);
-            color: white;
-            padding: 10px 22px;
-            border-radius: 20px;
-            text-decoration: none;
-            transition: 0.3s;
-            font-weight: 600;
-        }
-
-        .social-btn:hover {
-            background: var(--soft-pink);
-            color: #342e37;
+        footer p {
+            margin-bottom: 5px;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 768px) {
-            .header-container { flex-direction: column; gap: 15px; }
-            nav ul { flex-wrap: wrap; justify-content: center; }
+            .logo-container {
+                flex-direction: column;
+                gap: 5px;
+            }
+            nav {
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- Шапка сайту -->
     <header>
-        <div class="header-container">
-            <a href="#" class="logo-box">
-                <img src="logo.jpg" alt="Світ Дитини">
-                <div>
-                    <div style="font-weight: 800; font-size: 1.2rem; color: #d63384;">СВІТ ДИТИНИ</div>
-                    <div style="font-size: 0.8rem; color: #777;">Дитячий простір</div>
-                </div>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#branches">Філії</a></li>
-                    <li><a href="#activities">Заняття</a></li>
-                    <li><a href="#playroom">Ігрова та свята</a></li>
-                    <li><a href="#safety">Безпека</a></li>
-                    <li><a href="#gallery">Галерея</a></li>
-                    <li><a href="#contacts">Контакти</a></li>
-                </ul>
-            </nav>
-
-            <div class="phone-dropdown">
-                <button class="btn-call" onclick="togglePhoneMenu()">📞 Зателефонувати ▾</button>
-                <div class="phone-menu" id="phoneMenu">
-                    <a href="tel:+380634865932" class="phone-item">
-                        <span class="phone-item-title">📍 Правий берег (Голосіїв)</span>
-                        <span class="phone-item-address">вул. Ю. Здановської, 83а</span>
-                        <span class="phone-item-number">📞 (063) 486-59-32</span>
-                    </a>
-                    <a href="tel:+380636241364" class="phone-item">
-                        <span class="phone-item-title">📍 Лівий берег (Лівобережна)</span>
-                        <span class="phone-item-address">вул. Каховська, 62А, секція 7</span>
-                        <span class="phone-item-number">📞 (063) 624-13-64</span>
-                    </a>
-                </div>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Логотип Світ Дитини">
+            <div>
+                <h1>СВІТ ДИТИНИ</h1>
+                <p>Дитячий простір гармонійного розвитку</p>
             </div>
         </div>
+        <nav>
+            <a href="#branches">Філії</a>
+            <a href="#activities">Заняття</a>
+            <a href="#party">Ігрова та свята</a>
+            <a href="#gallery">Галерея</a>
+            <div class="dropdown">
+                <button class="dropbtn">📞 Контакти / Телефони</button>
+                <div class="dropdown-content">
+                    <a href="tel:0634865932">Правобережний: (063) 486-59-32</a>
+                    <a href="tel:0681234567">Лівобережний: (068) 123-45-67</a>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-container">
-            <h1>Простір щасливих дітей на Правому та Лівому березі Києва!</h1>
-            <p>Працюємо з 2015 року. Гармонійний розвиток, турбота, підготовка до школи та безпечне середовище для вашої дитини.</p>
-        </div>
-    </section>
+    <div class="container">
 
-    <!-- Блок Філій -->
-    <section id="branches">
-        <h2 style="text-align: center; margin-top: 45px; color: #4a3e3d;">Наші Філії</h2>
-        <div class="branches-grid">
-            <div class="branch-card">
-                <span class="branch-badge">Правий берег</span>
-                <h3>Філія Голосіїв</h3>
-                <p>📍 м. Київ, вул. Ю. Здановської, 83а</p>
-                <p>🚇 м. Виставковий центр / Васильківська</p>
-                <p>⏰ Пн-Пт: 08:00 - 18:00</p>
-                <a href="tel:+380634865932" class="btn-branch-call">📞 (063) 486-59-32</a>
-            </div>
-            <div class="branch-card">
-                <span class="branch-badge left-bank">Лівий берег</span>
-                <h3>Філія Лівобережна</h3>
-                <p>📍 м. Київ, вул. Каховська, 62А, секція 7</p>
-                <p>🚇 Орієнтир: м. Лівобережна (ЖК «Каховська»)</p>
-                <p>⏰ Пн-Пт: 08:00 - 18:00</p>
-                <a href="tel:+380636241364" class="btn-branch-call">📞 (063) 624-13-64</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Блок Безпеки -->
-    <section id="safety" style="padding: 0 20px;">
-        <div class="safety-box">
-            <h2>🛡️ Безпека вашої дитини — наш пріоритет</h2>
-            <p style="margin-top: 10px;">Обладнане укриття під час тривог, автономне світло та тепло, закрита територія під відеоспостереженням та кваліфікований персонал.</p>
-        </div>
-    </section>
-
-    <!-- Блок Активностей -->
-    <section id="activities" class="activities-section">
-        <h2 style="text-align: center; color: #4a3e3d;">Наші заняття та напрямки розвитку</h2>
-        <div class="activities-grid">
-
-            <div class="activity-card">
-                <div>
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🗣️</div>
-                    <h3>Логопед</h3>
-                    <p>Мовлення — це не лише звуки, а впевненість, контакт і радість від спілкування. На індивідуальних заняттях логопед допомагає дитині розвиватися мовлення у комфортному темпі.</p>
-                    <div id="logopedDetails" class="details-info">
-                        <strong>З чим працюємо:</strong>
-                        <ul>
-                            <li>неправильна звуковимова, невиразне мовлення</li>
-                            <li>затримка мовленнєвого розвитку, запуск мовлення</li>
-                            <li>спрощення, заміни або перестановки складів</li>
-                            <li>малий словниковий запас</li>
-                        </ul>
-                    </div>
+        <!-- Наші філії -->
+        <section id="branches">
+            <h2 class="section-title">Наші Філії</h2>
+            <div class="branches-grid">
+                <div class="branch-card">
+                    <span class="branch-badge">Правий берег</span>
+                    <h3>Філія Голосіїв</h3>
+                    <p>📍 <strong>Адреса:</strong> м. Київ, вул. Ю. Здановської, 83а</p>
+                    <p>🚇 <strong>Метро:</strong> Виставковий центр / Васильківська</p>
+                    <p>⏰ <strong>Графік:</strong> Пн-Пт: 08:00 - 18:00</p>
+                    <a href="tel:0634865932" class="phone-btn">📞 (063) 486-59-32</a>
                 </div>
-                <button class="btn-more" onclick="toggleDetails('logopedDetails', this)">Детальніше</button>
-            </div>
 
-            <div class="activity-card">
-                <div>
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">📚</div>
+                <div class="branch-card left-bank">
+                    <span class="branch-badge">Лівий берег</span>
+                    <h3>Філія Лівобережна</h3>
+                    <p>📍 <strong>Адреса:</strong> м. Київ, вул. Каховська, 62А, секція 1</p>
+                    <p>🚇 <strong>Метро:</strong> Лівобережна</p>
+                    <p>⏰ <strong>Графік:</strong> Пн-Пт: 08:00 - 19:00</p>
+                    <a href="tel:0681234567" class="phone-btn">📞 (068) 123-45-67</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Заняття -->
+        <section id="activities">
+            <h2 class="section-title">Наші Заняття та Розвиток</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <h3>Ранній розвиток</h3>
+                    <p>Комплексні розвиваючі заняття для малюків від 1 до 3 років, сенсорика, моторика.</p>
+                </div>
+                <div class="activity-card">
                     <h3>Підготовка до школи</h3>
-                    <p>Підготовка до школи — це не лише навчити читати й писати. Це про впевненість дитини, внутрішній спокій та бажання вчитися.</p>
-                    <div id="schoolDetails" class="details-info">
-                        <strong>На заняттях діти:</strong>
-                        <ul>
-                            <li>вчаться читати та розуміти прочитане</li>
-                            <li>опановують письмо та графомоторні навички</li>
-                            <li>розвивають логіку, мислення, пам’ять та увагу</li>
-                        </ul>
-                    </div>
+                    <p>Читання, письмо, логіка, математика та англійська мова для майбутніх першокласників.</p>
                 </div>
-                <button class="btn-more" onclick="toggleDetails('schoolDetails', this)">Детальніше</button>
-            </div>
-
-            <div class="activity-card">
-                <div>
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🇬🇧</div>
-                    <h3>Англійська мова</h3>
-                    <p>Англійська мова — це вікно у світ та легке спілкування без бар’єрів! Заняття проходять у формі захопливої гри.</p>
-                    <div id="englishDetails" class="details-info">
-                        <strong>На заняттях діти:</strong>
-                        <ul>
-                            <li>опановують базовий словниковий запас через ігри</li>
-                            <li>вчаться сприймати англійську мову на слух</li>
-                            <li>співають пісеньки, вивчають віршики</li>
-                        </ul>
-                    </div>
-                </div>
-                <button class="btn-more" onclick="toggleDetails('englishDetails', this)">Детальніше</button>
-            </div>
-
-            <div class="activity-card">
-                <div>
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🎨</div>
+                <div class="activity-card">
                     <h3>Творча студія</h3>
-                    <p>Творчість — це простір без кордонів, де кожна дитина відчуває себе справжнім митцем через малювання та глину.</p>
-                    <div id="artDetails" class="details-info">
-                        <strong>На заняттях діти:</strong>
+                    <p>Малювання, ліплення, аплікації та розвиток креативного мислення у дітей.</p>
+                </div>
+                <div class="activity-card">
+                    <h3>Хореографія та фітнес</h3>
+                    <p>Дитячий танець, рухливі ігри, гнучкість та гарна постава.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ігрова кімната та дні народження -->
+        <section id="party">
+            <div class="party-section">
+                <h2 class="section-title" style="margin-top:0;">Ігрова кімната та Дні народження</h2>
+                <div class="party-content">
+                    <div class="party-box">
+                        <h3>🎮 Ігрова кімната</h3>
+                        <p>Затишний, безпечний простір з великою кількістю іграшок, бізибордів, сухим басейном та розвиваючими зонами для щоденного дозвілля та веселих ігор під наглядом.</p>
+                    </div>
+                    <div class="party-box">
+                        <h3>🎉 Дні народження та свята</h3>
+                        <p>Організація незабутніх дитячих свят під ключ:</p>
                         <ul>
-                            <li>опановують різні техніки малювання</li>
-                            <li>працюють з глиною та опановують глинотерапію</li>
-                            <li>розвивають дрібну моторику та сенсорику</li>
+                            <li>Професійні аніматори та герої казок</li>
+                            <li>Яскраві паперові шоу та мильні бульбашки</li>
+                            <li>Індивідуальний святковий сценарій</li>
+                            <li>Святкова атмосфера та море емоцій</li>
                         </ul>
                     </div>
                 </div>
-                <button class="btn-more" onclick="toggleDetails('artDetails', this)">Детальніше</button>
             </div>
+        </section>
 
-            <div class="activity-card">
-                <div>
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🎵</div>
-                    <h3>Музичні заняття та логоритміка</h3>
-                    <p>Музика допомагає дитині розвиватися гармонійно, знімати емоційну напругу та відчувати радість руху.</p>
-                    <div id="musicDetails" class="details-info">
-                        <strong>На заняттях діти:</strong>
-                        <ul>
-                            <li>розвивають музичний слух та відчуття ритму</li>
-                            <li>знайомляться з дитячими інструментами</li>
-                            <li>виконують логоритмічні вправи</li>
-                        </ul>
-                    </div>
+        <!-- Галерея (5 реальних фотографій без підписів) -->
+        <section id="gallery">
+            <h2 class="section-title">Галерея простору</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="photo1.jpeg" alt="Фото простору 1">
                 </div>
-                <button class="btn-more" onclick="toggleDetails('musicDetails', this)">Детальніше</button>
-            </div>
-
-            <div class="activity-card">
-                <div>
-                    <div style="font-size: 2.5rem; margin-bottom: 10px;">💃</div>
-                    <h3>Хореографія</h3>
-                    <p>Хореографія — це розвиток тіла, впевненості та емоційного стану дитини. Допомагаємо рухатися з радістю.</p>
-                    <div id="danceDetails" class="details-info">
-                        <strong>На заняттях діти:</strong>
-                        <ul>
-                            <li>розвивають координацію, гнучкість і відчуття ритму</li>
-                            <li>вчаться керувати своїм тілом і рухами</li>
-                            <li>зміцнюють поставу та м’язи</li>
-                        </ul>
-                    </div>
+                <div class="gallery-item">
+                    <img src="photo2.jpeg" alt="Фото простору 2">
                 </div>
-                <button class="btn-more" onclick="toggleDetails('danceDetails', this)">Детальніше</button>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Блок: Ігрова кімната та святкування днів народження (З ПОДВІЙНИМ ТЕКСТОМ) -->
-    <section id="playroom" class="activities-section" style="margin-top: 20px;">
-        <div style="background: white; border-radius: 30px; padding: 40px; box-shadow: 0 10px 30px rgba(243, 196, 251, 0.3); border: 2px solid var(--soft-pink);">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <span class="branch-badge left-bank" style="font-size: 0.95rem; padding: 8px 20px;">🎈 Лівий берег (вул. Каховська, 62А, секція 7)</span>
-                <h2 style="color: #3a2e39; margin-top: 15px; font-size: 2rem;">Ігрова кімната та святкування днів народження</h2>
-                <p style="color: #d63384; font-weight: 700; font-size: 1.1rem; margin-top: 8px;">Місце, де народжуються щасливі спогади! 💗</p>
-                <p style="color: #5c5460; font-size: 1.05rem; max-width: 800px; margin: 15px auto 0 auto;">
-                    Запрошуємо до ігрової кімнати «Світ дитини» — простору, створеного для веселих пригод, активних ігор, нових знайомств та незабутніх свят. Тут можна весело провести час із друзями, відсвяткувати день народження або просто подарувати дитині кілька годин справжньої радості!
-                </p>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
-                
-                <!-- Ігрова кімната -->
-                <div style="background: var(--primary-bg); padding: 30px; border-radius: 25px; border: 1px solid #f8edeb;">
-                    <h3 style="color: #3d3a45; margin-bottom: 12px; font-size: 1.4rem;">🧸 Ігрова кімната</h3>
-                    <p style="color: #5c5460; font-size: 0.95rem; margin-bottom: 15px;">
-                        У нашому просторі кожна дитина знайде заняття до душі! Ми створили різноманітні ігрові зони, щоб малеча могла рухатися, фантазувати, досліджувати та гратися.
-                    </p>
-                    <p style="font-weight: 700; color: #d63384; margin-bottom: 10px; font-size: 0.95rem;">На маленьких відвідувачів чекають:</p>
-                    <ul style="margin-left: 18px; color: #55505f; font-size: 0.92rem; line-height: 1.7;">
-                        <li>Великий ігровий комплекс для активних пригод.</li>
-                        <li>Батут і сухий басейн.</li>
-                        <li>Зона настільних та розвивальних ігор.</li>
-                        <li>Простір для вільної гри та спілкування з друзями.</li>
-                    </ul>
-                    <p style="color: #5c5460; font-size: 0.92rem; margin-top: 15px; font-style: italic;">
-                        Ігрова кімната — це чудова можливість змінити звичну атмосферу, отримати нові враження та провести час із задоволенням.
-                    </p>
+                <div class="gallery-item">
+                    <img src="photo3.jpeg" alt="Фото простору 3">
                 </div>
-                
-                <!-- Святкування днів народження -->
-                <div style="background: var(--primary-bg); padding: 30px; border-radius: 25px; border: 1px solid #f8edeb;">
-                    <h3 style="color: #3d3a45; margin-bottom: 12px; font-size: 1.4rem;">🎂 Святкування дитячих днів народження</h3>
-                    <p style="color: #5c5460; font-size: 0.95rem; margin-bottom: 15px;">
-                        День народження, який дитина запам’ятає надовго! У «Світ дитини» можна організувати особливе свято, наповнене веселощами, іграми, творчістю та яскравими емоціями.
-                    </p>
-                    <p style="font-weight: 700; color: #d63384; margin-bottom: 10px; font-size: 0.95rem;">Що можна організувати?</p>
-                    <ul style="margin-left: 18px; color: #55505f; font-size: 0.92rem; line-height: 1.7;">
-                        <li><strong>Тематичні вечірки:</strong> Піратські пригоди, динозаври, космічні подорожі, beauty party та інші улюблені теми дітей.</li>
-                        <li><strong>Творчі майстер-класи:</strong> Виготовлення браслетів, прикрашання косметичок, створення іграшок та інші творчі розваги.</li>
-                        <li><strong>Ігри та розваги:</strong> Веселі конкурси, квести, танці, паперова дискотека та активні ігри.</li>
-                        <li><strong>Святкове частування:</strong> Можливість організувати солодкий стіл, піца-перекус та святковий торт.</li>
-                    </ul>
-                    <p style="color: #5c5460; font-size: 0.92rem; margin-top: 15px; font-style: italic;">
-                        Програму та наповнення свята обговорюємо індивідуально, враховуючи вік дітей, їхні захоплення та ваші побажання.
-                    </p>
+                <div class="gallery-item">
+                    <img src="photo4.jpeg" alt="Фото простору 4">
                 </div>
+                <div class="gallery-item">
+                    <img src="photo5.jpeg" alt="Фото простору 5">
+                </div>
+            </div>
+        </section>
 
-            </div>
+    </div>
 
-            <div style="text-align: center; margin-top: 30px;">
-                <p style="font-family: 'Comfortaa', cursive; font-size: 1.15rem; color: #d63384; font-weight: 700;">
-                    Подаруйте дитині свято, сповнене радості! 🎉
-                </p>
-                <p style="color: #5c5460; font-size: 0.95rem; margin-top: 5px;">
-                    Ми подбаємо про затишну атмосферу та допоможемо вам організувати особливий день у нашому просторі.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ГАЛЕРЕЯ БЕЗ ПОДПИСЕЙ -->
-    <section id="gallery" class="gallery-container">
-        <h2 style="color: #4a3e3d; margin-bottom: 10px;">Атмосфера нашого простору</h2>
-        <p style="color: #777; margin-bottom: 20px;">Затишок, розвиток та радість у кожному дні</p>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="photo1.jpeg" alt="Ігрова зона">
-            </div>
-            <div class="gallery-item">
-                <img src="photo2.jpeg" alt="Наші дітки">
-            </div>
-            <div class="gallery-item">
-                <img src="photo3.jpeg" alt="Розвиток та творчість">
-            </div>
-            <div class="gallery-item">
-                <img src="photo4.jpeg" alt="Творчі майстерки">
-            </div>
-            <div class="gallery-item">
-                <img src="photo5.jpeg" alt="Наші свята та події">
-            </div>
-        </div>
-    </section>
-
-    <!-- Підвал -->
-    <footer id="contacts">
-        <img src="logo.jpg" alt="Логотип" style="height: 55px; border-radius: 12px; margin-bottom: 10px;">
-        <h3>Дитячий простір «Світ дитини»</h3>
-        
-        <div class="footer-phones">
-            <div class="footer-phone-card">
-                <div style="font-size: 0.85rem; opacity: 0.8;">Правий берег (Голосіїв)</div>
-                <div style="font-size: 0.8rem; margin-bottom: 5px; opacity: 0.7;">вул. Ю. Здановської, 83а</div>
-                <a href="tel:+380634865932">📞 (063) 486-59-32</a>
-            </div>
-            <div class="footer-phone-card">
-                <div style="font-size: 0.85rem; opacity: 0.8;">Лівий берег (Лівобережна)</div>
-                <div style="font-size: 0.8rem; margin-bottom: 5px; opacity: 0.7;">вул. Каховська, 62А, секція 7</div>
-                <a href="tel:+380636241364">📞 (063) 624-13-64</a>
-            </div>
-        </div>
-        
-        <div class="social-links">
-            <a href="https://www.instagram.com/svitditini" target="_blank" class="social-btn">Інстаграм Правого берега</a>
-            <a href="https://www.instagram.com/svit_dytyny.kyiv" target="_blank" class="social-btn">Інстаграм Лівого берега</a>
-        </div>
-        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 20px;">© 2026 Світ дитини. Всі права захищені.</p>
+    <!-- Футер -->
+    <footer>
+        <p>© 2026 Дитячий простір «Світ дитини». Працюємо з любов'ю до малюків!</p>
+        <p>Київ • Правий та Лівий берег</p>
     </footer>
-
-    <script>
-        function toggleDetails(id, btn) {
-            var info = document.getElementById(id);
-            if (info.style.display === "none" || info.style.display === "") {
-                info.style.display = "block";
-                btn.innerText = "Сховати";
-            } else {
-                info.style.display = "none";
-                btn.innerText = "Детальніше";
-            }
-        }
-
-        function togglePhoneMenu() {
-            document.getElementById("phoneMenu").classList.toggle("show");
-        }
-
-        window.onclick = function(event) {
-            if (!event.target.matches('.btn-call') && !event.target.closest('.btn-call')) {
-                var dropdowns = document.getElementsByClassName("phone-menu");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
-    </script>
 
 </body>
 </html>
