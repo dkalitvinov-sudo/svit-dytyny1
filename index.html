@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Світ Дитини — Дитячий простір турботи та розвитку (Київ)</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Підключення бібліотеки Lightbox для красивого збільшення фото -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
     <style>
         :root {
             --primary-bg: #fff5f8;
@@ -85,7 +89,6 @@
             color: var(--accent-turquoise);
         }
 
-        /* Стилі для випадаючого меню дзвінка */
         .phone-dropdown {
             position: relative;
             display: inline-block;
@@ -361,6 +364,7 @@
             object-fit: cover;
             display: block;
             transition: transform 0.4s ease;
+            cursor: pointer;
         }
 
         .gallery-item:hover img {
@@ -457,7 +461,6 @@
                 </ul>
             </nav>
 
-            <!-- Кнопка Дзвінка з випадаючим вибором філії -->
             <div class="phone-dropdown">
                 <button class="btn-call" onclick="togglePhoneMenu()">📞 Зателефонувати ▾</button>
                 <div class="phone-menu" id="phoneMenu">
@@ -520,7 +523,6 @@
         <h2 style="text-align: center; color: #4a3e3d;">Наші заняття та напрямки розвитку</h2>
         <div class="activities-grid">
 
-            <!-- Логопед тепер на першому місці -->
             <div class="activity-card">
                 <div>
                     <div style="font-size: 2.5rem; margin-bottom: 10px;">🗣️</div>
@@ -654,7 +656,6 @@
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px;">
                 
-                <!-- Картка 1: Ігрова кімната -->
                 <div style="background: var(--primary-bg); border-radius: 20px; padding: 25px; border: 2px solid var(--soft-turquoise);">
                     <div style="font-size: 2.2rem; margin-bottom: 10px;">🧸</div>
                     <h3 style="color: #1b4965; margin-bottom: 12px;">Ігрова кімната</h3>
@@ -673,12 +674,11 @@
                     </p>
                 </div>
 
-                <!-- Картка 2: Святкування днів народження -->
                 <div style="background: var(--primary-bg); border-radius: 20px; padding: 25px; border: 2px solid var(--soft-pink);">
                     <div style="font-size: 2.2rem; margin-bottom: 10px;">🎂</div>
                     <h3 style="color: #d63384; margin-bottom: 12px;">Святкування дитячих днів народження</h3>
                     <p style="font-size: 0.95rem; color: #55505f; margin-bottom: 15px;">
-                        День народження, який дитина запам’ятає надовго! Пропонуємо оренду нашого простору для проведення свят. Ви можете запросити власних аніматорів або скористатися нашими рекомендаціями.
+                        День народження, який дитина запам’ятає надовgo! Пропонуємо оренду нашого простору для проведення свят. Ви можете запросити власних аніматорів або скористатися нашими рекомендаціями.
                     </p>
                     <strong style="font-size: 0.9rem; color: #d63384; display: block; margin-bottom: 8px;">Що можна організувати?</strong>
                     <ul style="margin-left: 18px; font-size: 0.9rem; color: #55505f;">
@@ -696,23 +696,52 @@
         </div>
     </section>
 
-    <!-- Блок Галереї -->
+    <!-- Блок Галереї із вашими 5 реальними фото -->
     <section id="gallery" class="gallery-section">
         <h2 style="text-align: center; color: #4a3e3d;">Атмосфера нашого простору</h2>
-        <p style="text-align: center; color: #777; margin-top: 5px;">Живі моменти з щоденного життя садочка</p>
+        <p style="text-align: center; color: #777; margin-top: 5px;">Натисніть на фото, щоб збільшити</p>
         <div class="gallery-grid">
+            
+            <!-- Фото 1 -->
             <div class="gallery-item">
-                <img src="photo1.jpg" alt="Творчі заняття">
+                <a href="https://i.ibb.co/674XjX7p/IMG8718.jpg" data-lightbox="space-gallery" data-title="Веселі ігри в ігровій зоні">
+                    <img src="https://i.ibb.co/674XjX7p/IMG8718.jpg" alt="Ігрова зона">
+                </a>
+                <div class="gallery-caption">🧸 Ігрова зона та розваги</div>
+            </div>
+
+            <!-- Фото 2 -->
+            <div class="gallery-item">
+                <a href="https://i.ibb.co/3ykG8v8D/IMG8650.jpg" data-lightbox="space-gallery" data-title="Наші дружні дітки у просторі Світ Дитини">
+                    <img src="https://i.ibb.co/3ykG8v8D/IMG8650.jpg" alt="Наші дітки">
+                </a>
+                <div class="gallery-caption">✨ Наші щасливі дітки</div>
+            </div>
+
+            <!-- Фото 3 -->
+            <div class="gallery-item">
+                <a href="https://i.ibb.co/213v8J03/IMG0426.jpg" data-lightbox="space-gallery" data-title="Розвиваючі заняття та творчість">
+                    <img src="https://i.ibb.co/213v8J03/IMG0426.jpg" alt="Розвиваючі заняття">
+                </a>
+                <div class="gallery-caption">📚 Розвиток та творчість</div>
+            </div>
+
+            <!-- Фото 4 -->
+            <div class="gallery-item">
+                <a href="https://i.ibb.co/qMsYc7XN/IMG0392-1.jpg" data-lightbox="space-gallery" data-title="Цікаві майстер-класи та заняття">
+                    <img src="https://i.ibb.co/qMsYc7XN/IMG0392-1.jpg" alt="Заняття у просторі">
+                </a>
                 <div class="gallery-caption">🎨 Творчі майстерки</div>
             </div>
+
+            <!-- Фото 5 -->
             <div class="gallery-item">
-                <img src="photo2.jpg" alt="Ігрова зона">
-                <div class="gallery-caption">🧸 Затишна ігрова зона</div>
+                <a href="https://i.ibb.co/spRzLqFv/IMG9041.jpg" data-lightbox="space-gallery" data-title="Святкові події та дружня атмосфера">
+                    <img src="https://i.ibb.co/spRzLqFv/IMG9041.jpg" alt="Свята та події">
+                </a>
+                <div class="gallery-caption">🎉 Наші свята та події</div>
             </div>
-            <div class="gallery-item">
-                <img src="photo3.jpg" alt="Розвиваючі заняття">
-                <div class="gallery-caption">📚 Навчання та розвиток</div>
-            </div>
+
         </div>
     </section>
 
@@ -741,8 +770,10 @@
         <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 20px;">© 2026 Світ дитини. Всі права захищені.</p>
     </footer>
 
+    <!-- Підключення скрипта Lightbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+
     <script>
-        // Перемикання деталей кнопок "Детальніше"
         function toggleDetails(id, btn) {
             var info = document.getElementById(id);
             if (info.style.display === "none" || info.style.display === "") {
@@ -754,12 +785,10 @@
             }
         }
 
-        // Перемикання випадаючого меню для телефонного дзвінка
         function togglePhoneMenu() {
             document.getElementById("phoneMenu").classList.toggle("show");
         }
 
-        // Закривати меню при кліку поза ним
         window.onclick = function(event) {
             if (!event.target.matches('.btn-call') && !event.target.closest('.btn-call')) {
                 var dropdowns = document.getElementsByClassName("phone-menu");
